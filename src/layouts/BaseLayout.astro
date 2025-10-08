@@ -1,0 +1,45 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { 
+  title = 'Tarvafi', 
+  description = 'Portfolio and work showcase' 
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title.replace('Tarvafi', 'Tarva.fi')}</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body class="min-h-screen flex flex-col" style="background-color: var(--color-background);">
+    <Nav currentPath={currentPath} />
+    
+    <main class="flex-grow pt-16">
+      <slot />
+    </main>
+    
+    <footer class="border-t mt-auto" style="background-color: var(--color-surface); border-color: var(--color-border);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <p class="text-sm text-center" style="color: var(--color-text-secondary);">
+          Crafted in 2025 in beautiful lakeside Tampere, Finland
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

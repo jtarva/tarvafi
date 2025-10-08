@@ -1,16 +1,590 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CaseStudyCard from '../components/CaseStudyCard.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Tarva.fi - Digital Experience Designer" description="I specialize in creating digital solutions that solve the right problems the right way.">
+	<div class="py-20 relative overflow-hidden" style="background-color: var(--color-background);">
+		<!-- Particle Animation Background -->
+		<svg id="particle-container" class="absolute top-0 left-0 w-full h-full pointer-events-none z-0"></svg>
+		<div class="max-w-[1200px] mx-auto px-[1.1rem] relative z-10">
+			<div class="text-center">
+				<div class="opacity-0 animate-fade-in mb-6" data-animate>
+					<h1 class="text-4xl sm:text-5xl lg:text-6xl font-medium gradient-heading leading-tight sm:leading-tight lg:leading-tight">
+						Creating <span class="glitch-text" data-text="Digital">Digital</span> Products
+					</h1>
+					<h1 class="text-4xl sm:text-5xl lg:text-6xl font-medium gradient-heading leading-tight sm:leading-tight lg:leading-tight">
+						That <span class="shine-matter">Matter</span>
+					</h1>
+				</div>
+				<div class="flex flex-row gap-4 sm:gap-6 justify-center opacity-0 animate-fade-in-delay-2" data-animate>
+					<a href="#" class="inline-flex items-center px-6 py-3 text-base font-medium rounded-[20px] text-white transition-all hover:scale-105" style="background-color: var(--color-accent);" onclick="scrollToAbout(event)">
+						Learn more
+					</a>
+					<a href="#contact" onclick="scrollToContact(event)" class="inline-flex items-center px-6 py-3 border text-base font-medium rounded-[20px] transition-all hover:scale-105" style="border-color: var(--color-border); background-color: var(--color-surface); color: var(--color-text-secondary);">
+						Get in touch
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<section id="about" class="py-16 relative" style="background-color: var(--color-background);">
+		<div class="max-w-[1200px] mx-auto px-[1.1rem]">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl font-medium mb-6 opacity-0 animate-fade-in gradient-heading" data-animate>About me</h2>
+				<div class="max-w-4xl mx-auto opacity-0 animate-fade-in-delay" data-animate>
+					<p class="text-lg mb-8 leading-relaxed" style="color: var(--color-text-secondary);">
+						Hello, I'm Jussi, a product professional with a digital design background. With over 15 years in product design and development, I specialize in creating digital solutions that solve the right problems the right way. My experience spans startup environments to enterprise-level projects, always with a focus on user-centered design and strategic thinking.
+					</p>
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+						<div class="text-center">
+							<div class="text-2xl font-bold mb-2 gradient-heading">15+</div>
+							<div class="text-sm uppercase tracking-wider" style="color: var(--color-text-muted);">Years Experience</div>
+						</div>
+						<div class="text-center">
+							<div class="text-2xl font-bold mb-2 gradient-heading">30+</div>
+							<div class="text-sm uppercase tracking-wider" style="color: var(--color-text-muted);">Products/Projects Delivered</div>
+						</div>
+						<div class="text-center">
+							<div class="text-2xl font-bold mb-2 gradient-heading">8</div>
+							<div class="text-sm uppercase tracking-wider" style="color: var(--color-text-muted);">Industries Served</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="how-i-work" class="py-16" style="background-color: var(--color-surface);">
+		<div class="max-w-[1200px] mx-auto px-[1.1rem]">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl font-medium mb-4 opacity-0 animate-fade-in gradient-heading" data-animate>How I work</h2>
+				<div class="text-lg max-w-4xl mx-auto opacity-0 animate-fade-in-delay text-center" style="color: var(--color-text-secondary);" data-animate>
+					<p class="mb-1">Successful products require more than good ideas. They need the right approach.</p>
+					<p>Here's what I've learned works:</p>
+				</div>
+			</div>
+
+			<div class="max-w-4xl mx-auto space-y-8">
+				<div class="opacity-0 animate-fade-in flex gap-6" data-animate>
+					<div class="flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center text-xl font-medium gradient-number-border" style="color: var(--color-text-primary);">
+						1
+					</div>
+					<div class="flex-1">
+						<h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Bridge Business Goals and User Needs</h3>
+						<p class="leading-relaxed" style="color: var(--color-text-secondary);">
+							I translate complex business requirements into intuitive user experiences that drive measurable results. My discovery work uncovers the real problems worth solving, not just surface-level requests.
+						</p>
+					</div>
+				</div>
+
+				<div class="opacity-0 animate-fade-in-delay flex gap-6" data-animate>
+					<div class="flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center text-xl font-medium gradient-number-border" style="color: var(--color-text-primary);">
+						2
+					</div>
+					<div class="flex-1">
+						<h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Lead Through Influence, Not Authority</h3>
+						<p class="leading-relaxed" style="color: var(--color-text-secondary);">
+							I challenge assumptions constructively and build consensus across engineering, design, and business stakeholders. My ability to ask difficult questions early prevents costly mistakes later.
+						</p>
+					</div>
+				</div>
+
+				<div class="opacity-0 animate-fade-in-delay-2 flex gap-6" data-animate>
+					<div class="flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center text-xl font-medium gradient-number-border" style="color: var(--color-text-primary);">
+						3
+					</div>
+					<div class="flex-1">
+						<h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Balance Vision with Pragmatism</h3>
+						<p class="leading-relaxed" style="color: var(--color-text-secondary);">
+							I navigate seamlessly between strategic roadmapping and execution details, ensuring big-picture thinking translates into deliverable solutions within real-world constraints.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="testimonials" class="py-16" style="background-color: var(--color-background);">
+		<div class="max-w-[1200px] mx-auto px-[1.1rem]">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl font-medium mb-4 opacity-0 animate-fade-in gradient-heading" data-animate>What people say</h2>
+				<div class="text-lg max-w-2xl mx-auto opacity-0 animate-fade-in-delay" style="color: var(--color-text-secondary);" data-animate>
+					<p>Feedback from colleagues and clients I've had the pleasure</p>
+					<p>of working with.</p>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				<div class="p-6 rounded-lg opacity-0 animate-fade-in flex flex-col justify-between h-full testimonial-card" style="background-color: var(--color-surface);" data-animate>
+					<div>
+						<div class="mb-4">
+							<svg class="h-6 w-6 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+							</svg>
+						</div>
+						<p class="text-base mb-4 leading-relaxed" style="color: var(--color-text-secondary);">
+							Jussi excels at discovery work and long-term development, engaging in thoughtful dialogue that welcomes challenges and tackles even the most complex questions. He has a genuine passion for uncovering the true business needs behind existing information systems and aligning them with practical project realities. Jussi seamlessly navigates between strategic vision and granular details, ensuring nothing is overlooked.
+						</p>
+					</div>
+					<div class="flex items-center person-details">
+						<div class="w-10 h-10 rounded-full mr-3" style="background-color: var(--color-accent);"></div>
+						<div>
+							<div class="font-medium text-sm" style="color: var(--color-text-primary);">Co-Designer - <a href="https://www.solita.fi/work/updating-finnish-pharmaceutical-data/" target="_blank" rel="noopener noreferrer" class="hover:brightness-125 transition-all" style="color: var(--color-accent);">Fimea registry</a></div>
+							<div class="text-sm" style="color: var(--color-text-muted);">Visual Designer, Solita</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="p-6 rounded-lg opacity-0 animate-fade-in-delay flex flex-col justify-between h-full testimonial-card" style="background-color: var(--color-surface);" data-animate>
+					<div>
+						<div class="mb-4">
+							<svg class="h-6 w-6 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+							</svg>
+						</div>
+						<p class="text-base mb-4 leading-relaxed" style="color: var(--color-text-secondary);">
+							I admire Jussi's ability to see the broader implications of decisions and recommendations, as well as his skillful approach to challenging and questioning client choices constructively. He consistently prioritizes the client's success by deeply considering their specific goals and needs.
+						</p>
+					</div>
+					<div class="flex items-center person-details">
+						<div class="w-10 h-10 rounded-full mr-3" style="background-color: var(--color-accent); border-radius: 50%; min-width: 2.5rem; min-height: 2.5rem;"></div>
+						<div>
+							<div class="font-medium text-sm" style="color: var(--color-text-primary);">Colleague - NAP platform</div>
+							<div class="text-sm" style="color: var(--color-text-muted);">Software Architect, Solita Oy</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="p-6 rounded-lg opacity-0 animate-fade-in-delay-2 flex flex-col justify-between h-full testimonial-card" style="background-color: var(--color-surface);" data-animate>
+					<div>
+						<div class="mb-4">
+							<svg class="h-6 w-6 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+							</svg>
+						</div>
+						<p class="text-base mb-4 leading-relaxed" style="color: var(--color-text-secondary);">
+							You play a key role with many clients, and your expertise is consistently sought after. You have strong connections across teams, and people naturally turn to you for guidance. Your work centers on helping others and sharing knowledge, which you do exceptionally well. You create a positive atmosphere wherever you collaborate.
+						</p>
+					</div>
+					<div class="flex items-center person-details">
+						<div class="w-10 h-10 rounded-full mr-3" style="background-color: var(--color-accent);"></div>
+						<div>
+							<div class="font-medium text-sm" style="color: var(--color-text-primary);">Colleague from Design Unit</div>
+							<div class="text-sm" style="color: var(--color-text-muted);">Design Team Lead, Solita</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<section id="contact" class="py-16" style="background-color: var(--color-surface);">
+		<div class="max-w-[1200px] mx-auto px-[1.1rem]">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl font-medium mb-4 opacity-0 animate-fade-in gradient-heading" data-animate>Let's talk</h2>
+			</div>
+
+			<div class="max-w-4xl mx-auto">
+				<div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+					<!-- Profile Picture - Left Side -->
+					<div class="flex-shrink-0">
+						<div class="w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden opacity-0 animate-fade-in border-2" data-animate style="border-color: rgba(0, 0, 0, 0.3);">
+							<img
+								src="/content/jussi_teal_and_purple.png"
+								alt="Jussi Tarvainen - Product Professional and Designer"
+								class="w-full h-full object-cover"
+							/>
+						</div>
+					</div>
+
+					<!-- Content - Right Side -->
+					<div class="flex-1 text-center md:text-left">
+						<p class="text-lg mb-6 leading-relaxed opacity-0 animate-fade-in-delay" style="color: var(--color-text-secondary);" data-animate>
+							I'm open to new opportunities in product management and design. If you're building something meaningful and need someone who leads through influence, let's connect.
+						</p>
+
+						<div class="space-y-4">
+							<!-- Primary CTA - Email -->
+							<div class="opacity-0 animate-fade-in-delay-2" data-animate>
+								<a
+									href="mailto:jussitarvainen@gmail.com"
+									class="inline-block px-8 py-3 rounded-lg font-medium transition-all duration-200 hover:brightness-110 hover:scale-105"
+									style="background: linear-gradient(135deg, #14b8a6 0%, #8b5cf6 100%); color: white;"
+								>
+									jussitarvainen@gmail.com
+								</a>
+							</div>
+
+							<!-- Secondary CTA - LinkedIn -->
+							<div class="opacity-0 animate-fade-in-delay-2" data-animate>
+								<a
+									href="https://www.linkedin.com/in/jussitarvainen/"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="inline-block text-sm transition-colors hover:brightness-150"
+									style="color: var(--color-text-muted);"
+								>
+									Connect on LinkedIn →
+								</a>
+							</div>
+
+							<!-- Resume Download -->
+							<div class="opacity-0 animate-fade-in-delay-2" data-animate>
+								<a
+									href="https://drive.google.com/file/d/1qUxB1ynvqzvm4haovu3lg-asKs7U7TNa/view?usp=sharing"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="inline-flex items-center gap-2 text-sm transition-colors hover:brightness-150"
+									style="color: var(--color-text-muted);"
+								>
+									Download my Resume
+									<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+									</svg>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</BaseLayout>
+
+<script>
+// D3.js Particle Animation System for Hero Background
+class ParticleSystem {
+    constructor() {
+        this.particles = [];
+        this.svg = d3.select('#particle-container');
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        this.particleCount = 600; // Reduced for better performance
+        this.animationState = 'forming';
+        this.sequenceStartTime = null;
+
+        this.initializeParticles();
+        this.createParticleElements();
+        this.startAnimation();
+    }
+
+    getResponsiveRadius() {
+        if (this.width < 768) {
+            return Math.random() * 0.6 + 0.4; // Bigger on mobile
+        } else if (this.width < 1024) {
+            return Math.random() * 0.8 + 0.5;
+        } else {
+            return Math.random() * 1.2 + 0.6; // Much bigger particles
+        }
+    }
+
+    initializeParticles() {
+        for (let i = 0; i < this.particleCount; i++) {
+            const particle = {
+                id: i,
+                x: Math.random() * this.width,
+                y: Math.random() * this.height,
+                radius: this.getResponsiveRadius(),
+                opacity: Math.random() * 0.2 + 0.1, // More dim
+                wigglePhase: Math.random() * Math.PI * 2,
+                wiggleSpeed: 0.01 + Math.random() * 0.01, // Slower wiggling
+                wiggleAmplitude: 1 + Math.random() * 2, // Smaller amplitude
+                twinklePhase: Math.random() * Math.PI * 2,
+                twinkleSpeed: 0.05 + Math.random() * 0.1,
+                twinkleAmplitude: 0.15 + Math.random() * 0.15,
+                baseOpacity: 0.2 + Math.random() * 0.15
+            };
+
+            // Calculate oval positions (centered in hero section)
+            const ovalCoords = this.getOvalCoordinates(i);
+            particle.ovalX = this.width / 2 + ovalCoords.x;
+            particle.ovalY = this.height * 0.15 + ovalCoords.y; // Position much higher in hero area
+            particle.baseOvalX = particle.ovalX;
+            particle.baseOvalY = particle.ovalY;
+            particle.currentBaseX = particle.baseOvalX;
+            particle.currentBaseY = particle.baseOvalY;
+
+            const twinkle = Math.sin(particle.twinklePhase) * particle.twinkleAmplitude;
+            particle.currentOpacity = Math.max(0.05, Math.min(0.4, particle.baseOpacity + twinkle));
+
+            this.particles.push(particle);
+        }
+    }
+
+    createParticleElements() {
+        this.svg.selectAll('circle')
+            .data(this.particles)
+            .enter()
+            .append('circle')
+            .attr('class', 'particle')
+            .attr('r', d => d.radius)
+            .attr('cx', d => d.x)
+            .attr('cy', d => d.y)
+            .attr('opacity', d => d.currentOpacity || d.baseOpacity)
+            .style('fill', 'rgba(255, 255, 255, 0.8)'); // White particles
+    }
+
+    getOvalCoordinates(index) {
+        const ovalWidth = Math.min(this.width * 1.0, 1600); // Even bigger width - full viewport
+        const ovalHeight = Math.min(this.height * 0.7, 700); // Even bigger height
+
+        // Create filled oval by distributing particles uniformly
+        const angle = (index / this.particleCount) * Math.PI * 2;
+        const radiusVariation = Math.sqrt(Math.random());
+        const currentAngle = angle + (Math.random() - 0.5) * 0.3;
+
+        const x = radiusVariation * (ovalWidth / 2) * Math.cos(currentAngle);
+        const y = radiusVariation * (ovalHeight / 2) * Math.sin(currentAngle);
+
+        return { x: x, y: y };
+    }
+
+    updateWiggle() {
+        // Gentle pulsating effect
+        const time = Date.now() / 1000;
+        const sizeVariation = Math.sin(time * 0.5) * 80; // Even bigger pulsing for massive cloud
+        const baseWidth = Math.min(this.width * 1.0, 1600);
+        const scaleFactor = (baseWidth + sizeVariation) / baseWidth;
+
+        this.particles.forEach((particle, index) => {
+            // Update twinkling
+            particle.twinklePhase += particle.twinkleSpeed;
+            const twinkle = Math.sin(particle.twinklePhase) * particle.twinkleAmplitude;
+            particle.currentOpacity = Math.max(0.05, Math.min(0.4, particle.baseOpacity + twinkle));
+
+            if (this.animationState === 'oval') {
+                // Scale oval positions
+                const originalX = particle.baseOvalX - this.width / 2;
+                const originalY = particle.baseOvalY - this.height * 0.15;
+                particle.currentBaseX = this.width / 2 + originalX * scaleFactor;
+                particle.currentBaseY = this.height * 0.15 + originalY * scaleFactor;
+            }
+
+            // Update wiggle phase
+            particle.wigglePhase += particle.wiggleSpeed;
+
+            // Calculate wiggle offset
+            const wiggleX = Math.sin(particle.wigglePhase) * particle.wiggleAmplitude;
+            const wiggleY = Math.cos(particle.wigglePhase * 0.7) * particle.wiggleAmplitude;
+
+            // Apply wiggle to current base position
+            particle.currentX = particle.currentBaseX + wiggleX;
+            particle.currentY = particle.currentBaseY + wiggleY;
+        });
+    }
+
+    animate() {
+        this.updateWiggle();
+
+        this.svg.selectAll('circle')
+            .attr('cx', d => d.currentX || d.baseOvalX)
+            .attr('cy', d => d.currentY || d.baseOvalY)
+            .attr('r', d => d.radius)
+            .style('opacity', d => d.currentOpacity || d.opacity);
+
+        requestAnimationFrame(() => this.animate());
+    }
+
+    startAnimation() {
+        // Start with oval formation
+        this.svg.selectAll('circle')
+            .transition()
+            .duration(2000)
+            .ease(d3.easeCubicOut)
+            .attr('cx', d => d.baseOvalX)
+            .attr('cy', d => d.baseOvalY)
+            .on('end', () => {
+                if (!this.sequenceStartTime) {
+                    this.sequenceStartTime = Date.now();
+                }
+            });
+
+        this.animationState = 'oval';
+        this.animate();
+    }
+
+    handleResize() {
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+
+        // Recalculate positions for all particles
+        this.particles.forEach((particle, i) => {
+            particle.radius = this.getResponsiveRadius();
+
+            const ovalCoords = this.getOvalCoordinates(i);
+            particle.ovalX = this.width / 2 + ovalCoords.x;
+            particle.ovalY = this.height * 0.15 + ovalCoords.y;
+            particle.baseOvalX = particle.ovalX;
+            particle.baseOvalY = particle.ovalY;
+            particle.currentBaseX = particle.baseOvalX;
+            particle.currentBaseY = particle.baseOvalY;
+        });
+    }
+}
+
+// Initialize particle system
+let particleSystem;
+
+function initializeParticleSystem() {
+    // Only initialize if the particle container exists (on homepage)
+    if (document.getElementById('particle-container')) {
+        particleSystem = new ParticleSystem();
+    }
+}
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    if (particleSystem) {
+        particleSystem.handleResize();
+    }
+});
+
+// Random glitch effect with variations
+function startRandomGlitch() {
+    const glitchElement = document.querySelector('.glitch-text');
+    if (!glitchElement) return;
+
+    // Define available glitch variations
+    const glitchVariations = [
+        { main: 'glitch-main-1', red: 'glitch-red-1', blue: 'glitch-blue-1' },
+        { main: 'glitch-main-2', red: 'glitch-red-2', blue: 'glitch-blue-2' },
+        { main: 'glitch-main-3', red: 'glitch-red-3', blue: 'glitch-blue-3' }
+    ];
+
+    function triggerGlitch() {
+        // Remove any existing glitch classes
+        glitchElement.classList.remove('glitch-active');
+
+        // Pick a random variation
+        const variation = glitchVariations[Math.floor(Math.random() * glitchVariations.length)];
+
+        // Apply the variation by updating CSS custom properties or creating dynamic styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .glitch-text.glitch-active { animation: ${variation.main} 2s ease-out; }
+            .glitch-text.glitch-active::before { animation: ${variation.red} 2s ease-out; }
+            .glitch-text.glitch-active::after { animation: ${variation.blue} 2s ease-out; }
+        `;
+        document.head.appendChild(style);
+
+        // Trigger the glitch
+        glitchElement.classList.add('glitch-active');
+
+        // Remove class and style after animation completes (2 seconds)
+        setTimeout(() => {
+            glitchElement.classList.remove('glitch-active');
+            document.head.removeChild(style);
+        }, 2000);
+
+        // Schedule next glitch at random interval (2-5 seconds) - more frequent
+        const nextGlitchDelay = Math.random() * 3000 + 2000; // 2-5 seconds instead of 3-7
+        setTimeout(triggerGlitch, nextGlitchDelay);
+    }
+
+    // Start first glitch after random initial delay (2-4 seconds) - faster start
+    const initialDelay = Math.random() * 2000 + 2000;
+    setTimeout(triggerGlitch, initialDelay);
+}
+
+// Smooth scroll to About section
+window.scrollToAbout = function(event) {
+    event.preventDefault();
+
+    console.log('scrollToAbout function called');
+    const target = document.getElementById('about');
+    console.log('Target element:', target);
+
+    if (!target) {
+        console.log('Target not found!');
+        return;
+    }
+
+    console.log('Attempting to scroll to About section');
+    // Get the target position and add offset for navigation
+    const targetPosition = target.offsetTop - 50; // 50px offset from top
+
+    window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+    });
+}
+
+// Smooth scroll to Contact section
+window.scrollToContact = function(event) {
+    event.preventDefault();
+
+    console.log('scrollToContact function called');
+    const target = document.getElementById('contact');
+    console.log('Target element:', target);
+
+    if (!target) {
+        console.log('Target not found!');
+        return;
+    }
+
+    console.log('Attempting to scroll to Contact section');
+    // Get the target position and add offset for navigation
+    const targetPosition = target.offsetTop - 50; // 50px offset from top
+
+    window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+    });
+}
+
+// Smooth scroll to How I Work section
+window.scrollToHowIWork = function(event) {
+    event.preventDefault();
+
+    console.log('scrollToHowIWork function called');
+    const target = document.getElementById('how-i-work');
+    console.log('Target element:', target);
+
+    if (!target) {
+        console.log('Target not found!');
+        return;
+    }
+
+    console.log('Attempting to scroll to How I Work section');
+    // Get the target position and add offset for navigation
+    const targetPosition = target.offsetTop - 50; // 50px offset from top
+
+    window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+    });
+}
+
+// Smooth scroll to Testimonials section
+window.scrollToTestimonials = function(event) {
+    event.preventDefault();
+
+    console.log('scrollToTestimonials function called');
+    const target = document.getElementById('testimonials');
+    console.log('Target element:', target);
+
+    if (!target) {
+        console.log('Target not found!');
+        return;
+    }
+
+    console.log('Attempting to scroll to Testimonials section');
+    // Get the target position and add offset for navigation
+    const targetPosition = target.offsetTop - 50; // 50px offset from top
+
+    window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+    });
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    initializeParticleSystem();
+    startRandomGlitch();
+});
+</script>

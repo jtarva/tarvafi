@@ -1,0 +1,111 @@
+---
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '/' } = Astro.props;
+
+const navItems = [
+  { name: 'About', href: '#about', onClick: 'scrollToAbout(event)' },
+  { name: 'Work', href: '#how-i-work', onClick: 'scrollToHowIWork(event)' },
+  { name: 'Testimonials', href: '#testimonials', onClick: 'scrollToTestimonials(event)' },
+  { name: 'Contact', href: '#contact', onClick: 'scrollToContact(event)' }
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-all duration-300" style="background-color: rgba(18, 18, 18, 0.4); border-color: var(--color-border);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center">
+        <a href="/" class="text-xl font-semibold" style="color: var(--color-text-primary);">
+          Tarva.fi
+        </a>
+      </div>
+      
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-8">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              onclick={item.onClick}
+              class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                currentPath === item.href
+                  ? 'text-white bg-gray-700'
+                  : 'text-gray-300 hover:text-white hover:bg-gray-700'
+              }`}
+            >
+              {item.name}
+            </a>
+          ))}
+        </div>
+      </div>
+      
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button
+          type="button"
+          class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu hidden md:hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t backdrop-blur-md" style="background-color: rgba(18, 18, 18, 0.9); border-color: var(--color-border);">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          onclick={item.onClick}
+          class={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+            currentPath === item.href
+              ? 'text-white bg-gray-700'
+              : 'text-gray-300 hover:text-white hover:bg-gray-700'
+          }`}
+        >
+          {item.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const mobileMenuButton = document.querySelector('.mobile-menu-button');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  const nav = document.querySelector('nav');
+  
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+    mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+  });
+
+  // Glass effect on scroll
+  let lastScrollY = 0;
+  
+  function updateNavOnScroll() {
+    const scrollY = window.scrollY;
+    
+    if (nav) {
+      if (scrollY > 20) {
+        nav.style.backgroundColor = 'rgba(18, 18, 18, 0.75)';
+        nav.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.3)';
+      } else {
+        nav.style.backgroundColor = 'rgba(18, 18, 18, 0.4)';
+        nav.style.boxShadow = 'none';
+      }
+    }
+    
+    lastScrollY = scrollY;
+  }
+
+  window.addEventListener('scroll', updateNavOnScroll, { passive: true });
+</script>
