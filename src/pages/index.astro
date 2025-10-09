@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CaseStudyCard from '../components/CaseStudyCard.astro';
+
+const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BASE_URL } : { site: '', base: '/' };
 ---
 
 <BaseLayout title="Jussi Tarvainen (tarva.fi)" description="I specialize in creating digital solutions that solve the right problems the right way.">
@@ -193,7 +195,7 @@ import CaseStudyCard from '../components/CaseStudyCard.astro';
 					<div class="flex-shrink-0">
 						<div class="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden opacity-0 animate-fade-in border-2" data-animate style="border-color: rgba(0, 0, 0, 0.3);">
 							<img
-								src="/content/jussi_teal_and_purple.png"
+								src={`${base.endsWith('/') ? base : base + '/'}content/jussi_teal_and_purple.png`}
 								alt="Jussi Tarvainen - Product Professional and Designer"
 								class="w-full h-full object-cover"
 								style="filter: grayscale(100%);"
