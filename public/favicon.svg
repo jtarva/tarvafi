@@ -10,7 +10,7 @@
         </linearGradient>
     </defs>
     <rect width="128" height="128" rx="20" class="bg"/>
-    <text x="64" y="88" text-anchor="middle" class="text" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="96" font-weight="600">JT</text>
+    <text x="64" y="90" text-anchor="middle" class="text" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="96" font-weight="600">JT</text>
     <style>
         .bg {
             fill: url(#bgGradient);
