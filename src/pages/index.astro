@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CaseStudyCard from '../components/CaseStudyCard.astro';
 ---
 
-<BaseLayout title="Tarva.fi - Digital Experience Designer" description="I specialize in creating digital solutions that solve the right problems the right way.">
+<BaseLayout title="Jussi Tarvainen (tarva.fi)" description="I specialize in creating digital solutions that solve the right problems the right way.">
 	<div class="py-20 relative overflow-hidden" style="background-color: var(--color-background);">
 		<!-- Particle Animation Background -->
 		<svg id="particle-container" class="absolute top-0 left-0 w-full h-full pointer-events-none z-0"></svg>
@@ -11,7 +11,7 @@ import CaseStudyCard from '../components/CaseStudyCard.astro';
 			<div class="text-center">
 				<div class="opacity-0 animate-fade-in mb-6" data-animate>
 					<h1 class="text-4xl sm:text-5xl lg:text-6xl font-medium gradient-heading leading-tight sm:leading-tight lg:leading-tight">
-						Creating <span class="glitch-text" data-text="Digital">Digital</span> Products
+						Creating <span class="glitch-text" data-text="Products">Products</span>
 					</h1>
 					<h1 class="text-4xl sm:text-5xl lg:text-6xl font-medium gradient-heading leading-tight sm:leading-tight lg:leading-tight">
 						That <span class="shine-matter">Matter</span>
@@ -72,9 +72,9 @@ import CaseStudyCard from '../components/CaseStudyCard.astro';
 						1
 					</div>
 					<div class="flex-1">
-						<h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Bridge Business Goals and User Needs</h3>
+						<h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Solve Real Problems, Measure Real Impact</h3>
 						<p class="leading-relaxed" style="color: var(--color-text-secondary);">
-							I translate complex business requirements into intuitive user experiences that drive measurable results. My discovery work uncovers the real problems worth solving, not just surface-level requests.
+							I uncover real user and business needs through discovery, then validate impact through clear metrics to ensure we create measurable value, not just ship features.
 						</p>
 					</div>
 				</div>
@@ -96,9 +96,9 @@ import CaseStudyCard from '../components/CaseStudyCard.astro';
 						3
 					</div>
 					<div class="flex-1">
-						<h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Balance Vision with Pragmatism</h3>
+						<h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Ship Consistently Across the Product Lifecycle</h3>
 						<p class="leading-relaxed" style="color: var(--color-text-secondary);">
-							I navigate seamlessly between strategic roadmapping and execution details, ensuring big-picture thinking translates into deliverable solutions within real-world constraints.
+							I balance strategic vision with execution reality by delivering new capabilities while continuously improving existing experiences, managing technical debt, and investing in team productivity. Sustainable user impact requires excellence across the entire product, not just new projects.
 						</p>
 					</div>
 				</div>
@@ -188,25 +188,26 @@ import CaseStudyCard from '../components/CaseStudyCard.astro';
 			</div>
 
 			<div class="max-w-4xl mx-auto">
-				<div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+				<div class="flex flex-row items-start gap-6 md:gap-12">
 					<!-- Profile Picture - Left Side -->
 					<div class="flex-shrink-0">
-						<div class="w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden opacity-0 animate-fade-in border-2" data-animate style="border-color: rgba(0, 0, 0, 0.3);">
+						<div class="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden opacity-0 animate-fade-in border-2" data-animate style="border-color: rgba(0, 0, 0, 0.3);">
 							<img
 								src="/content/jussi_teal_and_purple.png"
 								alt="Jussi Tarvainen - Product Professional and Designer"
 								class="w-full h-full object-cover"
+								style="filter: grayscale(100%);"
 							/>
 						</div>
 					</div>
 
 					<!-- Content - Right Side -->
-					<div class="flex-1 text-center md:text-left">
+					<div class="flex-1 text-left">
 						<p class="text-lg mb-6 leading-relaxed opacity-0 animate-fade-in-delay" style="color: var(--color-text-secondary);" data-animate>
 							I'm open to new opportunities in product management and design. If you're building something meaningful and need someone who leads through influence, let's connect.
 						</p>
 
-						<div class="space-y-4">
+						<div class="space-y-6">
 							<!-- Primary CTA - Email -->
 							<div class="opacity-0 animate-fade-in-delay-2" data-animate>
 								<a
@@ -219,31 +220,34 @@ import CaseStudyCard from '../components/CaseStudyCard.astro';
 							</div>
 
 							<!-- Secondary CTA - LinkedIn -->
-							<div class="opacity-0 animate-fade-in-delay-2" data-animate>
+							<div class="opacity-0 animate-fade-in-delay-2" data-animate style="margin-top: 4px;">
 								<a
 									href="https://www.linkedin.com/in/jussitarvainen/"
 									target="_blank"
 									rel="noopener noreferrer"
-									class="inline-block text-sm transition-colors hover:brightness-150"
+									class="inline-flex items-center gap-2 text-base transition-colors hover:brightness-150"
 									style="color: var(--color-text-muted);"
 								>
-									Connect on LinkedIn →
+									<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" style="margin-top: -1px;">
+										<path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
+									</svg>
+									View LinkedIn Profile
 								</a>
 							</div>
 
 							<!-- Resume Download -->
-							<div class="opacity-0 animate-fade-in-delay-2" data-animate>
+							<div class="opacity-0 animate-fade-in-delay-2" data-animate style="margin-left: -4px; margin-top: -8px;">
 								<a
 									href="https://drive.google.com/file/d/1qUxB1ynvqzvm4haovu3lg-asKs7U7TNa/view?usp=sharing"
 									target="_blank"
 									rel="noopener noreferrer"
-									class="inline-flex items-center gap-2 text-sm transition-colors hover:brightness-150"
+									class="inline-flex items-center gap-2 text-base transition-colors hover:brightness-150"
 									style="color: var(--color-text-muted);"
 								>
-									Download my Resume
-									<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 2px; margin-top: -1px;">
 										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
 									</svg>
+									<span style="margin-left: -3px;">Download my Resume</span>
 								</a>
 							</div>
 						</div>
@@ -445,8 +449,12 @@ window.addEventListener('resize', () => {
 
 // Random glitch effect with variations
 function startRandomGlitch() {
-    const glitchElement = document.querySelector('.glitch-text');
-    if (!glitchElement) return;
+    const glitchElements = [
+        document.querySelector('.glitch-text'),
+        document.querySelector('.glitch-text-products')
+    ].filter(el => el !== null);
+
+    if (glitchElements.length === 0) return;
 
     // Define available glitch variations
     const glitchVariations = [
@@ -456,8 +464,12 @@ function startRandomGlitch() {
     ];
 
     function triggerGlitch() {
+        // Pick a random element to glitch
+        const randomElement = glitchElements[Math.floor(Math.random() * glitchElements.length)];
+        const elementClass = randomElement.classList.contains('glitch-text') ? 'glitch-text' : 'glitch-text-products';
+
         // Remove any existing glitch classes
-        glitchElement.classList.remove('glitch-active');
+        randomElement.classList.remove('glitch-active');
 
         // Pick a random variation
         const variation = glitchVariations[Math.floor(Math.random() * glitchVariations.length)];
@@ -465,18 +477,18 @@ function startRandomGlitch() {
         // Apply the variation by updating CSS custom properties or creating dynamic styles
         const style = document.createElement('style');
         style.textContent = `
-            .glitch-text.glitch-active { animation: ${variation.main} 2s ease-out; }
-            .glitch-text.glitch-active::before { animation: ${variation.red} 2s ease-out; }
-            .glitch-text.glitch-active::after { animation: ${variation.blue} 2s ease-out; }
+            .${elementClass}.glitch-active { animation: ${variation.main} 2s ease-out; }
+            .${elementClass}.glitch-active::before { animation: ${variation.red} 2s ease-out; }
+            .${elementClass}.glitch-active::after { animation: ${variation.blue} 2s ease-out; }
         `;
         document.head.appendChild(style);
 
         // Trigger the glitch
-        glitchElement.classList.add('glitch-active');
+        randomElement.classList.add('glitch-active');
 
         // Remove class and style after animation completes (2 seconds)
         setTimeout(() => {
-            glitchElement.classList.remove('glitch-active');
+            randomElement.classList.remove('glitch-active');
             document.head.removeChild(style);
         }, 2000);
 

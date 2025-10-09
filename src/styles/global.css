@@ -259,7 +259,7 @@ body {
   display: inline-block;
   z-index: 1;
   /* Start with gradient style, will be animated */
-  background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 25%, #8b5cf6 75%, #a855f7 100%);
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -310,7 +310,7 @@ body {
 
 @keyframes glitch-main-1 {
   0%, 96% {
-    background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 25%, #8b5cf6 75%, #a855f7 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -319,7 +319,7 @@ body {
     filter: none;
   }
   97%, 97.3%, 97.6%, 97.9% {
-    background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 25%, #8b5cf6 75%, #a855f7 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -328,7 +328,7 @@ body {
     filter: brightness(140%) saturate(200%) contrast(130%);
   }
   97.15%, 97.45%, 97.75% {
-    background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 25%, #8b5cf6 75%, #a855f7 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -337,7 +337,7 @@ body {
     filter: brightness(160%) saturate(250%) contrast(150%) hue-rotate(15deg);
   }
   100% {
-    background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 25%, #8b5cf6 75%, #a855f7 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -349,7 +349,7 @@ body {
 
 @keyframes glitch-main-2 {
   0%, 94% {
-    background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 25%, #8b5cf6 75%, #a855f7 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -358,7 +358,7 @@ body {
     filter: none;
   }
   95%, 95.5%, 96% {
-    background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 25%, #8b5cf6 75%, #a855f7 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -367,7 +367,7 @@ body {
     filter: brightness(115%) saturate(130%) contrast(110%);
   }
   98%, 100% {
-    background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 25%, #8b5cf6 75%, #a855f7 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -379,7 +379,7 @@ body {
 
 @keyframes glitch-main-3 {
   0%, 90% {
-    background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 25%, #8b5cf6 75%, #a855f7 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -388,7 +388,7 @@ body {
     filter: none;
   }
   91%, 91.5%, 92%, 92.5% {
-    background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 25%, #8b5cf6 75%, #a855f7 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -397,7 +397,7 @@ body {
     filter: brightness(115%) saturate(130%) contrast(110%);
   }
   100% {
-    background: linear-gradient(135deg, #14b8a6 0%, #06b6d4 25%, #8b5cf6 75%, #a855f7 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

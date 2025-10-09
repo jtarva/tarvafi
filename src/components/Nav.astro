@@ -7,18 +7,18 @@ const { currentPath = '/' } = Astro.props;
 
 const navItems = [
   { name: 'About', href: '#about', onClick: 'scrollToAbout(event)' },
-  { name: 'Work', href: '#how-i-work', onClick: 'scrollToHowIWork(event)' },
+  { name: 'How I work', href: '#how-i-work', onClick: 'scrollToHowIWork(event)' },
   { name: 'Testimonials', href: '#testimonials', onClick: 'scrollToTestimonials(event)' },
   { name: 'Contact', href: '#contact', onClick: 'scrollToContact(event)' }
 ];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-all duration-300" style="background-color: rgba(18, 18, 18, 0.4); border-color: var(--color-border);">
+<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b transition-all duration-300 overflow-hidden" style="background-color: rgba(18, 18, 18, 0.4); border-color: var(--color-border);">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <div class="flex items-center">
-        <a href="/" class="text-xl font-semibold" style="color: var(--color-text-primary);">
-          Tarva.fi
+        <a href="/" class="text-lg font-semibold" style="color: var(--color-text-primary);">
+          Jussi Tarvainen
         </a>
       </div>
       
@@ -31,7 +31,7 @@ const navItems = [
               class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                 currentPath === item.href
                   ? 'text-white bg-gray-700'
-                  : 'text-gray-300 hover:text-white hover:bg-gray-700'
+                  : 'text-gray-300 hover:text-white'
               }`}
             >
               {item.name}
@@ -44,13 +44,18 @@ const navItems = [
       <div class="md:hidden">
         <button
           type="button"
-          class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
+          class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none relative"
           aria-controls="mobile-menu"
           aria-expanded="false"
         >
-          <span class="sr-only">Open main menu</span>
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <span class="sr-only">Toggle main menu</span>
+          <!-- Hamburger icon -->
+          <svg class="hamburger-icon h-6 w-6 transition-all duration-300 ease-in-out opacity-100 rotate-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Cross icon -->
+          <svg class="cross-icon h-6 w-6 transition-all duration-300 ease-in-out absolute opacity-0 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -58,8 +63,8 @@ const navItems = [
   </div>
 
   <!-- Mobile menu -->
-  <div class="mobile-menu hidden md:hidden">
-    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t backdrop-blur-md" style="background-color: rgba(18, 18, 18, 0.9); border-color: var(--color-border);">
+  <div class="mobile-menu md:hidden backdrop-blur-md transition-all duration-300 ease-out max-h-0" style="background-color: rgba(18, 18, 18, 0.2);">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t" style="border-color: var(--color-border);">
       {navItems.map((item) => (
         <a
           href={item.href}
@@ -67,7 +72,7 @@ const navItems = [
           class={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
             currentPath === item.href
               ? 'text-white bg-gray-700'
-              : 'text-gray-300 hover:text-white hover:bg-gray-700'
+              : 'text-gray-300 hover:text-white'
           }`}
         >
           {item.name}
@@ -82,10 +87,58 @@ const navItems = [
   const mobileMenu = document.querySelector('.mobile-menu');
   const nav = document.querySelector('nav');
   
-  mobileMenuButton?.addEventListener('click', () => {
-    mobileMenu?.classList.toggle('hidden');
-    const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
-    mobileMenuButton.setAttribute('aria-expanded', (!isExpanded).toString());
+  function closeMobileMenu() {
+    const hamburgerIcon = document.querySelector('.hamburger-icon');
+    const crossIcon = document.querySelector('.cross-icon');
+
+    mobileMenu?.classList.remove('max-h-96');
+    mobileMenu?.classList.add('max-h-0');
+    mobileMenuButton?.setAttribute('aria-expanded', 'false');
+
+    // Show hamburger, hide cross
+    hamburgerIcon?.classList.remove('opacity-0', 'rotate-180');
+    hamburgerIcon?.classList.add('opacity-100', 'rotate-0');
+    crossIcon?.classList.remove('opacity-100', 'rotate-0');
+    crossIcon?.classList.add('opacity-0', 'rotate-180');
+  }
+
+  function openMobileMenu() {
+    const hamburgerIcon = document.querySelector('.hamburger-icon');
+    const crossIcon = document.querySelector('.cross-icon');
+
+    mobileMenu?.classList.remove('max-h-0');
+    mobileMenu?.classList.add('max-h-96');
+    mobileMenuButton?.setAttribute('aria-expanded', 'true');
+
+    // Hide hamburger, show cross
+    hamburgerIcon?.classList.remove('opacity-100', 'rotate-0');
+    hamburgerIcon?.classList.add('opacity-0', 'rotate-180');
+    crossIcon?.classList.remove('opacity-0', 'rotate-180');
+    crossIcon?.classList.add('opacity-100', 'rotate-0');
+  }
+
+  mobileMenuButton?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = mobileMenu?.classList.contains('max-h-96');
+
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    const isOpen = mobileMenu?.classList.contains('max-h-96');
+    if (isOpen && nav && !nav.contains(e.target)) {
+      closeMobileMenu();
+    }
+  });
+
+  // Prevent menu from closing when clicking inside the mobile menu
+  mobileMenu?.addEventListener('click', (e) => {
+    e.stopPropagation();
   });
 
   // Glass effect on scroll

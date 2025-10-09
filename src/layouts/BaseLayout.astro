@@ -7,9 +7,9 @@ interface Props {
   description?: string;
 }
 
-const { 
-  title = 'Tarvafi', 
-  description = 'Portfolio and work showcase' 
+const {
+  title = 'Jussi Tarvainen (tarva.fi)',
+  description = 'Portfolio and work showcase'
 } = Astro.props;
 
 const currentPath = Astro.url.pathname;
@@ -23,7 +23,7 @@ const currentPath = Astro.url.pathname;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title.replace('Tarvafi', 'Tarva.fi')}</title>
+    <title>{title}</title>
     <script src="https://d3js.org/d3.v7.min.js"></script>
   </head>
   <body class="min-h-screen flex flex-col" style="background-color: var(--color-background);">
@@ -33,11 +33,11 @@ const currentPath = Astro.url.pathname;
       <slot />
     </main>
     
-    <footer class="border-t mt-auto" style="background-color: var(--color-surface); border-color: var(--color-border);">
+    <footer class="border-t mt-auto" style="background-color: black; border-color: var(--color-border);">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
         <p class="text-sm text-center" style="color: var(--color-text-secondary);">
-          Crafted in 2025 in beautiful lakeside Tampere, Finland
+          Crafted in 2025 in beautiful lakeside Tampere, Finland.
         </p>
       </div>
     </footer>
