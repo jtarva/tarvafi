@@ -5,6 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://jtarva.github.io',
+  base: '/tarvafi',
+  output: 'static',
   vite: {
     plugins: [tailwindcss()]
   }
