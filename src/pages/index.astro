@@ -4,6 +4,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BASE_URL } : { site: '', base: '/' };
 
+// Helper function to construct proper asset paths
+const getAssetPath = (imagePath) => {
+  if (!imagePath) return '';
+  const cleanBase = base.endsWith('/') ? base.slice(0, -1) : base;
+  const cleanImage = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+  return cleanBase + cleanImage;
+};
+
 // Get featured case studies
 const allCaseStudies = await getCollection('case-studies');
 const featuredCaseStudies = allCaseStudies
@@ -149,7 +157,7 @@ const featuredCaseStudies = allCaseStudies
 								data-animate>
 							<div class={`aspect-video relative overflow-hidden`}>
 								{caseStudy.data.image ? (
-									<img src={`${base}/${caseStudy.data.image}`} alt={caseStudy.data.title} class="w-full h-full object-cover" />
+									<img src={getAssetPath(caseStudy.data.image)} alt={caseStudy.data.title} class="w-full h-full object-cover" />
 								) : (
 									<div class={`bg-gradient-to-br ${gradients[index]} w-full h-full relative`}>
 										{isComingSoon && (
@@ -181,13 +189,13 @@ const featuredCaseStudies = allCaseStudies
 					}
 
 					return (
-						<a href={`${base}/case-studies/${caseStudy.slug}/`}
+						<a href={getAssetPath(`case-studies/${caseStudy.slug}/`)}
 							class={cardClasses}
 							style={`background-color: var(--color-background);`}
 							data-animate>
 							<div class={`aspect-video relative overflow-hidden`}>
 								{caseStudy.data.image ? (
-									<img src={`${base}/${caseStudy.data.image}`} alt={caseStudy.data.title} class="w-full h-full object-cover" />
+									<img src={getAssetPath(caseStudy.data.image)} alt={caseStudy.data.title} class="w-full h-full object-cover" />
 								) : (
 									<div class={`bg-gradient-to-br ${gradients[index]} w-full h-full relative`}>
 									</div>
