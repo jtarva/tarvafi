@@ -1,0 +1,330 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const caseStudies = await getCollection('case-studies');
+  return caseStudies.map((caseStudy) => ({
+    params: { slug: caseStudy.slug },
+    props: { caseStudy },
+  }));
+}
+
+const { caseStudy } = Astro.props;
+const { Content } = await caseStudy.render();
+const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BASE_URL } : { site: '', base: '/' };
+---
+
+<BaseLayout title={caseStudy.data.title} description={caseStudy.data.description}>
+  <article class="py-8 md:py-12" style="background-color: var(--color-background);">
+    <!-- Back Button -->
+    <div class="max-w-[1200px] mx-auto px-[1.1rem] mb-2 pb-4 md:pb-0">
+      <div class="flex justify-end">
+        <a href={`${base}/?from=case-study#featured-work`} class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-white/30 bg-transparent hover:border-white/60 hover:bg-white/10 transition-all duration-300 group">
+          <svg class="w-5 h-5 text-white/60 group-hover:text-white/90 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="max-w-4xl mx-auto px-[1.1rem] mb-16">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl md:text-5xl font-medium mb-6 gradient-heading">{caseStudy.data.title}</h1>
+        <p class="text-xl leading-relaxed max-w-3xl mx-auto" style="color: var(--color-text-secondary);">
+          {caseStudy.data.description}
+        </p>
+      </div>
+
+      <!-- Project Meta -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 p-6 rounded-lg" style="background-color: var(--color-surface);">
+        <div>
+          <h3 class="text-sm font-medium mb-2" style="color: var(--color-text-muted);">CLIENT</h3>
+          <p class="font-medium" style="color: var(--color-text-primary);">{caseStudy.data.client}</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium mb-2" style="color: var(--color-text-muted);">ROLE</h3>
+          <p class="font-medium" style="color: var(--color-text-primary);">{caseStudy.data.role}</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium mb-2" style="color: var(--color-text-muted);">TIMELINE</h3>
+          <p class="font-medium" style="color: var(--color-text-primary);">{caseStudy.data.timeline}</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium mb-2" style="color: var(--color-text-muted);">OUTCOME</h3>
+          <p class="font-medium" style="color: var(--color-text-primary);">{caseStudy.data.outcome}</p>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2 mt-6 justify-center">
+        {caseStudy.data.tags.map((tag) => (
+          <span class="px-3 py-1 text-sm rounded-full" style="background-color: var(--color-surface); color: var(--color-text-muted);">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Challenge Section -->
+    <section class="py-16" style="background-color: var(--color-background); border-top: 1px solid; border-image: linear-gradient(90deg, rgb(15 118 110), rgb(88 28 135)) 1;">
+      <div class="max-w-[1200px] mx-auto px-[1.1rem]">
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-12 items-center">
+          <div class="md:col-span-3 lg:col-span-2">
+            <h2 class="text-3xl font-medium mb-6 gradient-heading">The Challenge</h2>
+            <div class="case-study-content">
+              <p class="text-lg leading-relaxed mb-4" style="color: var(--color-text-secondary);">
+                Finland's pharmaceutical registry system (iRis) was facing critical challenges:
+              </p>
+              <ul class="space-y-3 text-base" style="color: var(--color-text-secondary);">
+                <li><strong style="color: var(--color-text-primary);">An aging system</strong> struggling with modern regulatory requirements</li>
+                <li><strong style="color: var(--color-text-primary);">Manual, Excel-based processes</strong> creating inefficiencies across the organization</li>
+                <li><strong style="color: var(--color-text-primary);">Need to comply</strong> with upcoming EU regulations for automated pharmaceutical change management</li>
+                <li><strong style="color: var(--color-text-primary);">Disconnected data silos</strong> preventing efficient information flow between stakeholders</li>
+              </ul>
+            </div>
+          </div>
+          <div class="w-1/2 mx-auto md:w-full lg:order-first overflow-hidden rounded-lg aspect-square">
+            <img src={`${base}/content/fimea/fimea_challenge.jpg`} alt="The Challenge - Legacy pharmaceutical system overview" class="w-full h-full rounded-lg shadow-lg object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Role Section -->
+    <section class="py-16" style="background-color: var(--color-surface);">
+      <div class="max-w-[1200px] mx-auto px-[1.1rem]">
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-12 items-center">
+          <div class="md:col-span-3 lg:col-span-2">
+            <h2 class="text-3xl font-medium mb-6 gradient-heading">My Role</h2>
+            <div class="case-study-content">
+              <p class="text-lg leading-relaxed" style="color: var(--color-text-secondary);">
+                As Senior Product Designer in a cross-functional team at Solita, I co-led the design effort alongside a colleague to reimagine how Finland manages pharmaceutical data. Our team included developers, IT architects, process specialists, and end-user specialists from both Solita and Fimea.
+              </p>
+            </div>
+          </div>
+          <div class="w-1/2 mx-auto md:w-full overflow-hidden rounded-lg aspect-square">
+            <img src={`${base}/content/fimea/fimea_myrole.jpg`} alt="My Role - Cross-functional team collaboration" class="w-full h-full rounded-lg shadow-lg object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Approach Section -->
+    <section class="py-16" style="background-color: var(--color-background);">
+      <div class="max-w-[1200px] mx-auto px-[1.1rem]">
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-12 items-center">
+          <div class="md:col-span-3 lg:col-span-2">
+            <h2 class="text-3xl font-medium mb-6 gradient-heading">Design Approach</h2>
+            <div class="case-study-content">
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Understanding the Ecosystem</h3>
+              <p class="text-base leading-relaxed mb-6" style="color: var(--color-text-secondary);">
+                My fellow designer and I began by conducting extensive stakeholder mapping across Fimea's organization, facilitating workshops with administrative staff, system administrators, researchers, and doctors. We created detailed journey maps that revealed how existing Excel-driven processes were creating bottlenecks and inefficiencies, while analyzing Finland's regulatory landscape and EU compliance requirements that would impact user workflows.
+              </p>
+
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Data Transformation and Trust Building</h3>
+              <p class="text-base leading-relaxed mb-6" style="color: var(--color-text-secondary);">
+                While our development team operated using agile methodologies, the real challenge was working with Fimea to bridge the gap between their existing system and future needs. We spent significant time helping stakeholders understand the difference between the original system's data points and what would be needed for the new system, scoping the project based on must-have data requirements. Equally important was building trust among the entire team: creating an environment where both Solita and Fimea members felt comfortable sharing concerns and feedback openly.
+              </p>
+
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Rapid Iteration Through Design Sprints</h3>
+              <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
+                We translated identified use cases into detailed user interface sketches while developers set up the required infrastructure. Once two-week sprints started, we established a good rhythm with Fimea to validate designs before building them. We remained flexible, breaking from the sprint rhythm when needed to conduct spikes on difficult problems. Our design documentation lived in Figma, while development coordination was maintained through JIRA and Confluence.
+              </p>
+            </div>
+          </div>
+          <div class="w-1/2 mx-auto md:w-full lg:order-first overflow-hidden rounded-lg aspect-square">
+            <img src={`${base}/content/fimea/fimea_designapproach.jpg`} alt="Design Approach - Journey mapping and workshop facilitation" class="w-full h-full rounded-lg shadow-lg object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Design Deliverables Section -->
+    <section class="py-16" style="background-color: var(--color-surface);">
+      <div class="max-w-[1200px] mx-auto px-[1.1rem]">
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-12 items-center">
+          <div class="md:col-span-3 lg:col-span-2">
+            <h2 class="text-3xl font-medium mb-6 gradient-heading">Key Design Deliverables</h2>
+            <div class="case-study-content">
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Information Architecture Transformation</h3>
+              <p class="text-base leading-relaxed mb-4" style="color: var(--color-text-secondary);">
+                Our team redesigned the data structure to support both current needs and future scalability, creating a unified system replacing fragmented Excel-based workflows.
+              </p>
+
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">User Interface Design</h3>
+              <p class="text-base leading-relaxed mb-4" style="color: var(--color-text-secondary);">
+                We developed a modern, user-friendly interface with responsive designs for various device types.
+              </p>
+
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Process Simplification</h3>
+              <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
+                Transformed unnecessary Excel-based workflows into specific interface views, cutting down what previously took one month of manual work to just a couple of days through automated processes and intuitive dashboard systems.
+              </p>
+            </div>
+          </div>
+          <div class="w-1/2 mx-auto md:w-full overflow-hidden rounded-lg aspect-square">
+            <img src={`${base}/content/fimea/fimea_deliverables.jpg`} alt="Key Design Deliverables - Information architecture and UI design" class="w-full h-full rounded-lg shadow-lg object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementation & Testing Section -->
+    <section class="py-16" style="background-color: var(--color-background);">
+      <div class="max-w-[1200px] mx-auto px-[1.1rem]">
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-12 items-center">
+          <div class="md:col-span-3 lg:col-span-2">
+            <h2 class="text-3xl font-medium mb-6 gradient-heading">Implementation & Testing</h2>
+            <div class="case-study-content">
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Early and Continuous Testing</h3>
+              <p class="text-base leading-relaxed mb-4" style="color: var(--color-text-secondary);">
+                With the team we facilitated weekly testing sessions with development team members, designed testing protocols for E2E validation, and created feedback loops to quickly incorporate user insights.
+              </p>
+
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Deployment Strategy</h3>
+              <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
+                Designed the rollout plan for Saga system implementation across Fimea, created training materials and onboarding flows, and developed change management materials to ease the transition.
+              </p>
+            </div>
+          </div>
+          <div class="w-1/2 mx-auto md:w-full lg:order-first overflow-hidden rounded-lg aspect-square">
+            <img src={`${base}/content/fimea/fimea_testing.jpg`} alt="Implementation & Testing - Testing protocols and deployment strategy" class="w-full h-full rounded-lg shadow-lg object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results & Impact Section -->
+    <section class="py-16" style="background-color: var(--color-surface);">
+      <div class="max-w-[1200px] mx-auto px-[1.1rem]">
+        <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-12 items-center">
+          <div class="md:col-span-3 lg:col-span-2">
+            <h2 class="text-3xl font-medium mb-6 gradient-heading">Results & Impact</h2>
+            <div class="case-study-content">
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Immediate Outcomes</h3>
+              <ul class="space-y-3 mb-6 text-base" style="color: var(--color-text-secondary);">
+                <li><strong style="color: var(--color-text-primary);">Successfully launched</strong> the first production version ahead of deadline.</li>
+                <li><strong style="color: var(--color-text-primary);">Reduced manual processing time</strong> 2-15x depending on the task through automation.</li>
+                <li><strong style="color: var(--color-text-primary);">Improved data quality</strong> and consistency across the organization.</li>
+              </ul>
+
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Continued Collaboration</h3>
+              <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
+                The cooperation between Solita and Fimea has successfully continued to this day, with the platform functionalities expanding significantly. The system has gained praise and interest among other European medicinal agencies, demonstrating the success of the collaborative approach and the platform's potential for broader impact across the pharmaceutical regulatory landscape.
+              </p>
+            </div>
+          </div>
+          <div class="w-1/2 mx-auto md:w-full overflow-hidden rounded-lg aspect-square">
+            <img src={`${base}/content/fimea/fimea_results.jpg`} alt="Results & Impact - System performance metrics and outcomes" class="w-full h-full rounded-lg shadow-lg object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Lessons Section -->
+    <section class="py-16" style="background-color: var(--color-background);">
+      <div class="max-w-[1200px] mx-auto px-[1.1rem]">
+        <div class="text-center max-w-4xl mx-auto">
+          <h2 class="text-3xl font-medium mb-8 gradient-heading">Design Lessons Learned</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="p-6 rounded-lg" style="background-color: var(--color-surface);">
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Co-creation is Critical</h3>
+              <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
+                Working closely with my design colleague, the developers, and substance matter experts from Fimea allowed us to tackle complex problems from multiple angles and maintain design consistency across a large system.
+              </p>
+            </div>
+            <div class="p-6 rounded-lg" style="background-color: var(--color-surface);">
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Facilitation as a Design Tool</h3>
+              <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
+                A well-facilitated kickoff was crucial for project success, bringing together diverse stakeholders early to align on goals and building trust that we can achieve great results together.
+              </p>
+            </div>
+            <div class="p-6 rounded-lg" style="background-color: var(--color-surface);">
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Bridging Technical and Human Needs</h3>
+              <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
+                The project required balancing strict regulatory requirements with user-friendly interfaces through iterative testing and continuous engagement.
+              </p>
+            </div>
+            <div class="p-6 rounded-lg" style="background-color: var(--color-surface);">
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Designing for Change</h3>
+              <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
+                Beyond creating interfaces, we designed new ways of working that transformed how Fimea operates, moving from siloed departments to integrated teams.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="max-w-4xl mx-auto px-[1.1rem] mt-16">
+      <div class="border-t pt-8" style="border-color: var(--color-border);">
+        <div class="flex justify-between items-center">
+          <a href={`${base}/?from=case-study#featured-work`} class="inline-flex items-center gap-2 text-base font-medium transition-colors hover:brightness-150" style="color: var(--color-accent);">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            Back to Featured Work
+          </a>
+          <div class="text-sm" style="color: var(--color-text-muted);">
+            Published {new Date(caseStudy.data.publishedDate).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .case-study-content {
+    color: var(--color-text-secondary);
+  }
+
+  .case-study-content h2 {
+    color: var(--color-text-primary);
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .case-study-content h3 {
+    color: var(--color-text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .case-study-content h4 {
+    color: var(--color-text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .case-study-content p {
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .case-study-content ul, .case-study-content ol {
+    margin-bottom: 1.5rem;
+  }
+
+  .case-study-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .case-study-content strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+</style>

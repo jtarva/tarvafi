@@ -10,7 +10,7 @@ html {
   --color-surface: #121212;
   --color-surface-elevated: #1e1e1e;
   --color-border: #2a2a2a;
-  --color-text-primary: #ffffff;
+  --color-text-primary: #e0e0e0;
   --color-text-secondary: #a1a1aa;
   --color-text-muted: #71717a;
   --color-accent: #3b82f6;
@@ -23,6 +23,11 @@ body {
   line-height: 1.6;
   background-color: var(--color-background);
   color: var(--color-text-primary);
+}
+
+/* Fix for text-4xl line-height to prevent descender cutoff */
+.text-4xl {
+  line-height: 1.3 !important;
 }
 
 /* Fade-in animations */
@@ -160,6 +165,22 @@ body {
   z-index: 10;
 }
 
+/* Featured Work section gradient border */
+#featured-work {
+  position: relative;
+}
+
+#featured-work::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.6) 0%, rgba(59, 130, 246, 0.2) 25%, rgba(59, 130, 246, 0.05) 50%, rgba(59, 130, 246, 0.2) 75%, rgba(59, 130, 246, 0.6) 100%);
+  z-index: 10;
+}
+
 /* Gradient number borders for How I work section */
 .gradient-number-border {
   background: transparent;
@@ -211,6 +232,14 @@ body {
   padding: 1rem 1.5rem;
   border-radius: 0 0 0.5rem 0.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Case study card borders */
+.case-study-card {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Animated gradient logo */

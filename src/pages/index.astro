@@ -1,8 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CaseStudyCard from '../components/CaseStudyCard.astro';
 
 const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BASE_URL } : { site: '', base: '/' };
+
+// Get featured case studies
+const allCaseStudies = await getCollection('case-studies');
+const featuredCaseStudies = allCaseStudies
+  .filter(study => study.data.featured)
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
 ---
 
 <BaseLayout title="Jussi Tarvainen (tarva.fi)" description="I specialize in creating solutions that solve the right problems the right way.">
@@ -108,6 +115,107 @@ const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BA
 		</div>
 	</section>
 
+	<section id="featured-work" class="py-16" style="background-color: var(--color-surface);">
+		<div class="max-w-[1200px] mx-auto px-[1.1rem]">
+			<div class="text-center mb-12">
+				<h2 class="text-3xl font-medium mb-4 opacity-0 animate-fade-in gradient-heading" data-animate>Featured Work</h2>
+				<div class="text-lg max-w-2xl mx-auto opacity-0 animate-fade-in-delay" style="color: var(--color-text-secondary);" data-animate>
+					<p>Selected projects that showcase my approach to</p>
+					<p>solving product challenges.</p>
+				</div>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+				{featuredCaseStudies.map((caseStudy, index) => {
+					const gradients = [
+						'from-teal-500 to-purple-600',
+						'from-blue-500 to-teal-600',
+						'from-purple-500 to-pink-600'
+					];
+					const animationDelays = [
+						'animate-fade-in',
+						'animate-fade-in-delay',
+						'animate-fade-in-delay-2'
+					];
+
+					const isComingSoon = caseStudy.data.comingSoon || caseStudy.slug === 'aibidia-release-cycles' || caseStudy.slug === 'aibidia-ai-features';
+					const cardClasses = `group block rounded-lg overflow-hidden opacity-0 ${animationDelays[index]} ${isComingSoon ? '' : 'hover:scale-105'} transition-all duration-300 case-study-card flex flex-col h-full`;
+
+					if (isComingSoon) {
+						return (
+							<div
+								class={cardClasses}
+								style={`background-color: var(--color-background); opacity: 0.75; cursor: default;`}
+								data-animate>
+							<div class={`aspect-video relative overflow-hidden`}>
+								{caseStudy.data.image ? (
+									<img src={`${base}/${caseStudy.data.image}`} alt={caseStudy.data.title} class="w-full h-full object-cover" />
+								) : (
+									<div class={`bg-gradient-to-br ${gradients[index]} w-full h-full relative`}>
+										{isComingSoon && (
+											<div class="absolute top-3 left-3 px-2 py-1 text-xs rounded-full bg-black/50 text-white/80">
+												Available soon
+											</div>
+										)}
+									</div>
+								)}
+							</div>
+							<div class="p-6 flex-grow">
+								<h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">{caseStudy.data.title}</h3>
+								<p class="leading-relaxed mb-4" style="color: var(--color-text-secondary);">
+									{caseStudy.data.description}
+								</p>
+							</div>
+							<div class="px-6 pb-6 pt-4" style="background-color: rgba(0, 0, 0, 0.3); margin: 0 0 0 0; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+								<div class="flex flex-wrap gap-2">
+									{caseStudy.data.tags.slice(0, 3).map((tag) => (
+										<span class="px-3 py-1 text-xs rounded-full" style="background-color: var(--color-surface); color: var(--color-text-muted);">{tag}</span>
+									))}
+									{caseStudy.data.tags.length > 3 && (
+										<span class="px-3 py-1 text-xs rounded-full" style="background-color: var(--color-surface); color: var(--color-text-muted);">+{caseStudy.data.tags.length - 3} more</span>
+									)}
+								</div>
+							</div>
+						</div>
+						);
+					}
+
+					return (
+						<a href={`${base}/case-studies/${caseStudy.slug}/`}
+							class={cardClasses}
+							style={`background-color: var(--color-background);`}
+							data-animate>
+							<div class={`aspect-video relative overflow-hidden`}>
+								{caseStudy.data.image ? (
+									<img src={`${base}/${caseStudy.data.image}`} alt={caseStudy.data.title} class="w-full h-full object-cover" />
+								) : (
+									<div class={`bg-gradient-to-br ${gradients[index]} w-full h-full relative`}>
+									</div>
+								)}
+							</div>
+							<div class="p-6 flex-grow">
+								<h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">{caseStudy.data.title}</h3>
+								<p class="leading-relaxed mb-4" style="color: var(--color-text-secondary);">
+									{caseStudy.data.description}
+								</p>
+							</div>
+							<div class="px-6 pb-6 pt-4" style="background-color: rgba(0, 0, 0, 0.3); margin: 0 0 0 0; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+								<div class="flex flex-wrap gap-2">
+									{caseStudy.data.tags.slice(0, 3).map((tag) => (
+										<span class="px-3 py-1 text-xs rounded-full" style="background-color: var(--color-surface); color: var(--color-text-muted);">{tag}</span>
+									))}
+									{caseStudy.data.tags.length > 3 && (
+										<span class="px-3 py-1 text-xs rounded-full" style="background-color: var(--color-surface); color: var(--color-text-muted);">+{caseStudy.data.tags.length - 3} more</span>
+									)}
+								</div>
+							</div>
+						</a>
+					);
+				})}
+			</div>
+		</div>
+	</section>
+
 	<section id="testimonials" class="py-16" style="background-color: var(--color-background);">
 		<div class="max-w-[1200px] mx-auto px-[1.1rem]">
 			<div class="text-center mb-12">
@@ -167,7 +275,7 @@ const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BA
 							</svg>
 						</div>
 						<p class="text-base mb-4 leading-relaxed" style="color: var(--color-text-secondary);">
-							You play a key role with many clients, and your expertise is consistently sought after. You have strong connections across teams, and people naturally turn to you for guidance. Your work centers on helping others and sharing knowledge, which you do exceptionally well. You create a positive atmosphere wherever you collaborate.
+							Jussi plays a key role with many clients, and his expertise is consistently sought after. He has strong connections across teams, and people naturally turn to him for guidance. His work centers on helping others and sharing knowledge, which he does exceptionally well. He creates a positive atmosphere wherever he collaborates.
 						</p>
 					</div>
 					<div class="flex items-center person-details">
@@ -179,6 +287,15 @@ const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BA
 					</div>
 				</div>
 
+			</div>
+
+			<!-- Second row with additional testimonial -->
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
+				<div class="p-6 rounded-lg opacity-0 animate-fade-in-delay-2 flex flex-col justify-center h-full testimonial-card" style="background-color: var(--color-surface);" data-animate>
+					<p class="text-base leading-relaxed text-center" style="color: var(--color-text-secondary);">
+						Additional testimonials added shortly
+					</p>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -645,6 +762,29 @@ window.scrollToHowIWork = function(event) {
     });
 }
 
+// Smooth scroll to Featured Work section
+window.scrollToFeaturedWork = function(event) {
+    event.preventDefault();
+
+    console.log('scrollToFeaturedWork function called');
+    const target = document.getElementById('featured-work');
+    console.log('Target element:', target);
+
+    if (!target) {
+        console.log('Target not found!');
+        return;
+    }
+
+    console.log('Attempting to scroll to Featured Work section');
+    // Get the target position and add offset for navigation
+    const targetPosition = target.offsetTop - 50; // 50px offset from top
+
+    window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+    });
+}
+
 // Smooth scroll to Testimonials section
 window.scrollToTestimonials = function(event) {
     event.preventDefault();
@@ -668,9 +808,55 @@ window.scrollToTestimonials = function(event) {
     });
 }
 
+// Handle direct navigation from case studies (no smooth scroll)
+function handleCaseStudyNavigation() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const hash = window.location.hash;
+
+    if (urlParams.get('from') === 'case-study' && hash) {
+        // Temporarily disable smooth scrolling on the html element
+        const htmlElement = document.documentElement;
+        const originalScrollBehavior = htmlElement.style.scrollBehavior;
+        htmlElement.style.scrollBehavior = 'auto';
+
+        // Remove the URL parameter to clean up the URL
+        const newUrl = window.location.pathname + hash;
+        window.history.replaceState({}, '', newUrl);
+
+        // Wait for the page to fully render, then adjust position
+        setTimeout(() => {
+            const targetId = hash.substring(1); // Remove the # from hash
+            const target = document.getElementById(targetId);
+            if (target) {
+                // Use offsetTop for more reliable positioning
+                const targetPosition = target.offsetTop - 60; // 60px offset to clear nav bar and add padding
+                console.log('Scrolling to position:', targetPosition, 'for target:', targetId);
+
+                window.scrollTo({
+                    top: Math.max(0, targetPosition), // Ensure we don't scroll to negative values
+                    behavior: 'auto'
+                });
+            }
+        }, 50); // Small delay to ensure page is rendered
+
+        // Restore original scroll behavior after a brief delay
+        setTimeout(() => {
+            htmlElement.style.scrollBehavior = originalScrollBehavior;
+        }, 200);
+    }
+}
+
+// Initialize immediately, not waiting for DOM loaded, to catch the navigation early
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('from') === 'case-study') {
+    // Disable smooth scrolling before the page fully loads
+    document.documentElement.style.scrollBehavior = 'auto';
+}
+
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initializeParticleSystem();
     startRandomGlitch();
+    handleCaseStudyNavigation();
 });
 </script>

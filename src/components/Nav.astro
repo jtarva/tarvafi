@@ -6,11 +6,35 @@ interface Props {
 const { currentPath = '/' } = Astro.props;
 const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BASE_URL } : { site: '', base: '/' };
 
+// Check if we're on a case study page
+const isOnCaseStudy = currentPath?.includes('/case-studies/');
+
 const navItems = [
-  { name: 'About', href: '#about', onClick: 'scrollToAbout(event)' },
-  { name: 'How I work', href: '#how-i-work', onClick: 'scrollToHowIWork(event)' },
-  { name: 'Testimonials', href: '#testimonials', onClick: 'scrollToTestimonials(event)' },
-  { name: 'Contact', href: '#contact', onClick: 'scrollToContact(event)' }
+  {
+    name: 'About',
+    href: isOnCaseStudy ? `${base}/?from=case-study#about` : '#about',
+    onClick: isOnCaseStudy ? '' : 'scrollToAbout(event)'
+  },
+  {
+    name: 'How I work',
+    href: isOnCaseStudy ? `${base}/?from=case-study#how-i-work` : '#how-i-work',
+    onClick: isOnCaseStudy ? '' : 'scrollToHowIWork(event)'
+  },
+  {
+    name: 'Featured Work',
+    href: isOnCaseStudy ? `${base}/?from=case-study#featured-work` : '#featured-work',
+    onClick: isOnCaseStudy ? '' : 'scrollToFeaturedWork(event)'
+  },
+  {
+    name: 'Testimonials',
+    href: isOnCaseStudy ? `${base}/?from=case-study#testimonials` : '#testimonials',
+    onClick: isOnCaseStudy ? '' : 'scrollToTestimonials(event)'
+  },
+  {
+    name: 'Contact',
+    href: isOnCaseStudy ? `${base}/?from=case-study#contact` : '#contact',
+    onClick: isOnCaseStudy ? '' : 'scrollToContact(event)'
+  }
 ];
 ---
 
@@ -28,7 +52,7 @@ const navItems = [
           {navItems.map((item) => (
             <a
               href={item.href}
-              onclick={item.onClick}
+              onclick={item.onClick || undefined}
               class={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                 currentPath === item.href
                   ? 'text-white bg-gray-700'
@@ -69,7 +93,7 @@ const navItems = [
       {navItems.map((item) => (
         <a
           href={item.href}
-          onclick={item.onClick}
+          onclick={item.onClick || undefined}
           class={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
             currentPath === item.href
               ? 'text-white bg-gray-700'
