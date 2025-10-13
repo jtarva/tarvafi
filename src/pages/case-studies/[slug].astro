@@ -13,6 +13,14 @@ export async function getStaticPaths() {
 const { caseStudy } = Astro.props;
 const { Content } = await caseStudy.render();
 const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BASE_URL } : { site: '', base: '/' };
+
+// Helper function to construct proper asset paths
+const getAssetPath = (imagePath) => {
+  if (!imagePath) return '';
+  const cleanBase = base.endsWith('/') ? base.slice(0, -1) : base;
+  const cleanImage = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+  return cleanBase + cleanImage;
+};
 ---
 
 <BaseLayout title={caseStudy.data.title} description={caseStudy.data.description}>
@@ -20,7 +28,7 @@ const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BA
     <!-- Back Button -->
     <div class="max-w-[1200px] mx-auto px-[1.1rem] mb-2 pb-4 md:pb-0">
       <div class="flex justify-end">
-        <a href={`${base}/?from=case-study#featured-work`} class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-white/30 bg-transparent hover:border-white/60 hover:bg-white/10 transition-all duration-300 group">
+        <a href={getAssetPath('?from=case-study#featured-work')} class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-white/30 bg-transparent hover:border-white/60 hover:bg-white/10 transition-all duration-300 group">
           <svg class="w-5 h-5 text-white/60 group-hover:text-white/90 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
@@ -86,7 +94,7 @@ const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BA
             </div>
           </div>
           <div class="w-1/2 mx-auto md:w-full lg:order-first overflow-hidden rounded-lg aspect-square">
-            <img src={`${base}/content/fimea/fimea_challenge.jpg`} alt="The Challenge - Legacy pharmaceutical system overview" class="w-full h-full rounded-lg shadow-lg object-cover">
+            <img src={getAssetPath('content/fimea/fimea_challenge.jpg')} alt="The Challenge - Legacy pharmaceutical system overview" class="w-full h-full rounded-lg shadow-lg object-cover">
           </div>
         </div>
       </div>
@@ -105,7 +113,7 @@ const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BA
             </div>
           </div>
           <div class="w-1/2 mx-auto md:w-full overflow-hidden rounded-lg aspect-square">
-            <img src={`${base}/content/fimea/fimea_myrole.jpg`} alt="My Role - Cross-functional team collaboration" class="w-full h-full rounded-lg shadow-lg object-cover">
+            <img src={getAssetPath('content/fimea/fimea_myrole.jpg')} alt="My Role - Cross-functional team collaboration" class="w-full h-full rounded-lg shadow-lg object-cover">
           </div>
         </div>
       </div>
@@ -135,7 +143,7 @@ const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BA
             </div>
           </div>
           <div class="w-1/2 mx-auto md:w-full lg:order-first overflow-hidden rounded-lg aspect-square">
-            <img src={`${base}/content/fimea/fimea_designapproach.jpg`} alt="Design Approach - Journey mapping and workshop facilitation" class="w-full h-full rounded-lg shadow-lg object-cover">
+            <img src={getAssetPath('content/fimea/fimea_designapproach.jpg')} alt="Design Approach - Journey mapping and workshop facilitation" class="w-full h-full rounded-lg shadow-lg object-cover">
           </div>
         </div>
       </div>
@@ -165,7 +173,7 @@ const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BA
             </div>
           </div>
           <div class="w-1/2 mx-auto md:w-full overflow-hidden rounded-lg aspect-square">
-            <img src={`${base}/content/fimea/fimea_deliverables.jpg`} alt="Key Design Deliverables - Information architecture and UI design" class="w-full h-full rounded-lg shadow-lg object-cover">
+            <img src={getAssetPath('content/fimea/fimea_deliverables.jpg')} alt="Key Design Deliverables - Information architecture and UI design" class="w-full h-full rounded-lg shadow-lg object-cover">
           </div>
         </div>
       </div>
@@ -190,7 +198,7 @@ const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BA
             </div>
           </div>
           <div class="w-1/2 mx-auto md:w-full lg:order-first overflow-hidden rounded-lg aspect-square">
-            <img src={`${base}/content/fimea/fimea_testing.jpg`} alt="Implementation & Testing - Testing protocols and deployment strategy" class="w-full h-full rounded-lg shadow-lg object-cover">
+            <img src={getAssetPath('content/fimea/fimea_testing.jpg')} alt="Implementation & Testing - Testing protocols and deployment strategy" class="w-full h-full rounded-lg shadow-lg object-cover">
           </div>
         </div>
       </div>
@@ -217,7 +225,7 @@ const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BA
             </div>
           </div>
           <div class="w-1/2 mx-auto md:w-full overflow-hidden rounded-lg aspect-square">
-            <img src={`${base}/content/fimea/fimea_results.jpg`} alt="Results & Impact - System performance metrics and outcomes" class="w-full h-full rounded-lg shadow-lg object-cover">
+            <img src={getAssetPath('content/fimea/fimea_results.jpg')} alt="Results & Impact - System performance metrics and outcomes" class="w-full h-full rounded-lg shadow-lg object-cover">
           </div>
         </div>
       </div>
@@ -262,7 +270,7 @@ const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BA
     <div class="max-w-4xl mx-auto px-[1.1rem] mt-16">
       <div class="border-t pt-8" style="border-color: var(--color-border);">
         <div class="flex justify-between items-center">
-          <a href={`${base}/?from=case-study#featured-work`} class="inline-flex items-center gap-2 text-base font-medium transition-colors hover:brightness-150" style="color: var(--color-accent);">
+          <a href={getAssetPath('?from=case-study#featured-work')} class="inline-flex items-center gap-2 text-base font-medium transition-colors hover:brightness-150" style="color: var(--color-accent);">
             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
             </svg>
