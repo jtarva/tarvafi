@@ -8,8 +8,8 @@ tags: ["Product Strategy", "AI/ML", "Enterprise SaaS", "Revenue Growth", "Innova
 featured: true
 order: 3
 comingSoon: true
-# image: "content/case-study-aibidia-ai-cover.jpg"
-# heroImage: "content/case-study-aibidia-ai-cover.jpg"
+# image: "case-studies/aibidia-ai-hero.jpg"
+# heroImage: "case-studies/aibidia-ai-hero.jpg"
 publishedDate: 2024-06-10
 outcome: "Drove expansion revenue from existing enterprise accounts"
 ---

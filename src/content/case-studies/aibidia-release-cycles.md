@@ -8,8 +8,8 @@ tags: ["Process Design", "Team Leadership", "Agile Transformation", "Short-term"
 featured: true
 order: 2
 comingSoon: true
-# image: "content/case-study-aibidia-releases-cover.jpg"
-# heroImage: "content/case-study-aibidia-releases-cover.jpg"
+# image: "case-studies/aibidia-releases-hero.jpg"
+# heroImage: "case-studies/aibidia-releases-hero.jpg"
 publishedDate: 2024-02-15
 outcome: "75% reduction in release cycles, contributing to 115% YoY growth"
 ---
