@@ -1,6 +1,6 @@
 ---
 title: "Fimea Pharmaceutical Registry"
-description: "Modernizing Finland's pharmaceutical data systems through user-centered design, strategic product thinking, and quality software engineering."
+description: "Modernizing Finland's pharmaceutical data systems through user-centered design, strategic product thinking, and rigorous software engineering."
 client: "Finnish Medicines Agency (Fimea)"
 role: "Senior Product Designer at Solita"
 timeline: "2 years"
@@ -17,10 +17,10 @@ outcome: "A modern register platform with EU-level compatibility"
 
 Finland's pharmaceutical registry system (iRis) was facing critical challenges:
 
-- **An aging system** struggling with modern regulatory requirements
-- **Manual, Excel-based processes** creating inefficiencies across the organization
-- **Need to comply** with upcoming EU regulations for automated pharmaceutical change management
-- **Disconnected data silos** preventing efficient information flow between stakeholders
+- **An aging system** struggling with modern regulatory requirements.
+- **Manual, Excel-based processes** creating inefficiencies across the organization.
+- **Need to comply** with upcoming EU regulations for automated pharmaceutical change management.
+- **Disconnected data silos** preventing efficient information flow between stakeholders.
 
 ## My Role
 
