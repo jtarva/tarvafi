@@ -9,30 +9,37 @@ const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BA
 // Check if we're on a case study page
 const isOnCaseStudy = currentPath?.includes('/case-studies/');
 
+// Helper function to construct proper navigation URLs
+const getNavUrl = (section: string) => {
+  if (!isOnCaseStudy) return `#${section}`;
+  const cleanBase = base.endsWith('/') ? base.slice(0, -1) : base;
+  return `${cleanBase}/?from=case-study#${section}`;
+};
+
 const navItems = [
   {
     name: 'About',
-    href: isOnCaseStudy ? `${base}/?from=case-study#about` : '#about',
+    href: getNavUrl('about'),
     onClick: isOnCaseStudy ? '' : 'scrollToAbout(event)'
   },
   {
     name: 'How I work',
-    href: isOnCaseStudy ? `${base}/?from=case-study#how-i-work` : '#how-i-work',
+    href: getNavUrl('how-i-work'),
     onClick: isOnCaseStudy ? '' : 'scrollToHowIWork(event)'
   },
   {
     name: 'Featured Work',
-    href: isOnCaseStudy ? `${base}/?from=case-study#featured-work` : '#featured-work',
+    href: getNavUrl('featured-work'),
     onClick: isOnCaseStudy ? '' : 'scrollToFeaturedWork(event)'
   },
   {
     name: 'Testimonials',
-    href: isOnCaseStudy ? `${base}/?from=case-study#testimonials` : '#testimonials',
+    href: getNavUrl('testimonials'),
     onClick: isOnCaseStudy ? '' : 'scrollToTestimonials(event)'
   },
   {
     name: 'Contact',
-    href: isOnCaseStudy ? `${base}/?from=case-study#contact` : '#contact',
+    href: getNavUrl('contact'),
     onClick: isOnCaseStudy ? '' : 'scrollToContact(event)'
   }
 ];
