@@ -1,0 +1,282 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const { site, base } = Astro.site ? { site: Astro.site, base: import.meta.env.BASE_URL } : { site: '', base: '/' };
+
+// Helper function to construct proper asset paths
+const getAssetPath = (imagePath) => {
+  if (!imagePath) return '';
+  const cleanBase = base.endsWith('/') ? base.slice(0, -1) : base;
+  const cleanImage = imagePath.startsWith('/') ? imagePath : `/${imagePath}`;
+  return cleanBase + cleanImage;
+};
+
+// Case study data
+const caseStudy = {
+  title: "AI-Powered Document Translation",
+  description: "Launching AI capabilities that transformed document processing for multinational enterprises and unlocked additional revenue from existing enterprise clients.",
+  company: "Aibidia",
+  role: "Co-Head of Compliance Product",
+  timeline: "6 months",
+  outcome: "Drove expansion revenue from existing enterprise accounts",
+  publishedDate: new Date("2025-10-27")
+};
+---
+
+<BaseLayout title={caseStudy.title} description={caseStudy.description}>
+  <article class="py-8 md:py-12" style="background-color: var(--color-background);">
+    <!-- Back Button -->
+    <div class="max-w-[1200px] mx-auto px-[1.1rem] mb-2 pb-4 md:pb-0">
+      <div class="flex justify-end">
+        <a href={getAssetPath('/') + '?from=case-study#featured-work'} class="inline-flex items-center justify-center w-12 h-12 rounded-full border border-white/30 bg-transparent hover:border-white/60 hover:bg-white/10 transition-all duration-300 group">
+          <svg class="w-5 h-5 text-white/60 group-hover:text-white/90 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="max-w-4xl mx-auto px-[1.1rem] mb-16">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl md:text-5xl font-medium mb-6 gradient-heading">{caseStudy.title}</h1>
+        <p class="text-xl leading-relaxed max-w-3xl mx-auto" style="color: var(--color-text-secondary);">
+          {caseStudy.description}
+        </p>
+      </div>
+
+      <!-- Project Meta -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 p-6 rounded-lg" style="background-color: var(--color-surface);">
+        <div>
+          <h3 class="text-sm font-medium mb-2" style="color: var(--color-text-muted);">COMPANY</h3>
+          <p class="font-medium" style="color: var(--color-text-primary);">{caseStudy.company}</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium mb-2" style="color: var(--color-text-muted);">ROLE</h3>
+          <p class="font-medium" style="color: var(--color-text-primary);">{caseStudy.role}</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium mb-2" style="color: var(--color-text-muted);">TIMELINE</h3>
+          <p class="font-medium" style="color: var(--color-text-primary);">{caseStudy.timeline}</p>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium mb-2" style="color: var(--color-text-muted);">OUTCOME</h3>
+          <p class="font-medium" style="color: var(--color-text-primary);">{caseStudy.outcome}</p>
+        </div>
+      </div>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2 mt-6 justify-center">
+        {["Product Strategy", "AI/ML", "Enterprise SaaS", "Revenue Growth", "Innovation"].map((tag) => (
+          <span class="px-3 py-1 text-sm rounded-full" style="background-color: var(--color-surface); color: var(--color-text-muted);">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- Challenge Section -->
+    <section class="py-16" style="background-color: var(--color-surface); border-top: 1px solid; border-image: linear-gradient(90deg, rgb(15 118 110), rgb(88 28 135)) 1;">
+      <div class="max-w-[1200px] mx-auto px-[1.1rem]">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-medium mb-6 gradient-heading">The Challenge</h2>
+          <div class="case-study-content">
+            <p class="text-lg leading-relaxed mb-4" style="color: var(--color-text-secondary);">
+              Aibidia's enterprise clients were struggling with manual document translation processes in their transfer pricing workflows. The challenge was translating thousands of regulatory documents across 15+ languages while maintaining legal accuracy and audit compliance.
+            </p>
+            <ul class="space-y-3 text-base" style="color: var(--color-text-secondary);">
+              <li><strong style="color: var(--color-text-primary);">Manual translation bottlenecks</strong> were slowing compliance processes, taking 2-3 days per document for multinational corporations.</li>
+              <li><strong style="color: var(--color-text-primary);">Language barriers</strong> created inefficiencies in global tax documentation workflows across 15+ languages.</li>
+              <li><strong style="color: var(--color-text-primary);">Quality inconsistencies</strong> in translations were impacting compliance accuracy, particularly for specialized tax and legal terminology.</li>
+              <li><strong style="color: var(--color-text-primary);">High operational costs</strong> from outsourced translation services.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Role Section -->
+    <section class="py-16" style="background-color: var(--color-background);">
+      <div class="max-w-[1200px] mx-auto px-[1.1rem]">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-medium mb-6 gradient-heading">My Role</h2>
+          <div class="case-study-content">
+            <p class="text-lg leading-relaxed" style="color: var(--color-text-secondary);">
+              As Co-Head of Compliance Product, I co-owned the end-to-end strategy and execution of AI-powered compliance features. I collaborated directly with data scientists to define the technical approach: combining third-party AI translation services with custom fine-tuning for high-priority languages on tax and legal terminology. I designed the product experience and detailed UX to set clear expectations—users understood translation quality levels and the workflow enabled easy manual review and correction. This transparency built trust and drove adoption. I defined success metrics and managed the cross-functional launch with engineering and customer success teams.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Approach Section -->
+    <section class="py-16" style="background-color: var(--color-surface);">
+      <div class="max-w-[1200px] mx-auto px-[1.1rem]">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-medium mb-6 gradient-heading">Design Approach</h2>
+          <div class="case-study-content">
+            <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">1. Market Research and User Validation</h3>
+            <ul class="space-y-2 mb-6 text-base" style="color: var(--color-text-secondary);">
+              <li>Conducted user interviews with enterprise clients to understand translation pain points.</li>
+              <li>Analyzed existing workflows and identified automation opportunities.</li>
+              <li>Researched AI/ML capabilities and competitive landscape in tax technology.</li>
+              <li>Validated business case with senior leadership and key enterprise accounts.</li>
+            </ul>
+
+            <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">2. AI Experience Design</h3>
+            <ul class="space-y-2 mb-6 text-base" style="color: var(--color-text-secondary);">
+              <li>Designed user flows for AI-assisted document translation with single-click translation generation and storage.</li>
+              <li>Created interfaces that balanced automation with user control and transparency, setting clear expectations about translation quality levels.</li>
+              <li>Developed confidence indicators and quality assurance workflows that enabled easy manual review and correction.</li>
+              <li>Established fallback patterns for edge cases and quality issues, particularly for languages without custom fine-tuning.</li>
+            </ul>
+
+            <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">3. Enterprise Integration Strategy</h3>
+            <ul class="space-y-2 text-base" style="color: var(--color-text-secondary);">
+              <li>Mapped AI features to existing enterprise workflows and compliance requirements.</li>
+              <li>Together with Customer Success created documentation and training materials for client teams.</li>
+              <li>Established metrics for measuring AI feature adoption and business impact.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementation & Results Section -->
+    <section class="py-16" style="background-color: var(--color-surface);">
+      <div class="max-w-[1200px] mx-auto px-[1.1rem]">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-medium mb-6 gradient-heading">Implementation & Results</h2>
+          <div class="case-study-content">
+            <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Technical Innovation</h3>
+            <ul class="space-y-2 mb-6 text-base" style="color: var(--color-text-secondary);">
+              <li><strong style="color: var(--color-text-primary);">Hybrid AI approach</strong> combining third-party AI translation services with custom fine-tuning for high-priority languages.</li>
+              <li><strong style="color: var(--color-text-primary);">Enterprise-grade reliability</strong> meeting compliance and security requirements for regulatory documents.</li>
+              <li><strong style="color: var(--color-text-primary);">Scalable processing</strong> capable of handling thousands of documents across 15+ languages.</li>
+            </ul>
+
+            <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Business Impact</h3>
+            <ul class="space-y-2 mb-6 text-base" style="color: var(--color-text-secondary);">
+              <li><strong style="color: var(--color-text-primary);">Drove expansion revenue</strong> from existing enterprise accounts through AI feature adoption.</li>
+              <li><strong style="color: var(--color-text-primary);">Strong product-led growth</strong> with customers enabling the premium feature based on product value alone.</li>
+              <li><strong style="color: var(--color-text-primary);">Market differentiation</strong> validating AI product capabilities and opening conversations with prospects about additional AI-powered compliance automation.</li>
+            </ul>
+
+            <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Efficiency and Quality Outcomes</h3>
+            <ul class="space-y-2 text-base" style="color: var(--color-text-secondary);">
+              <li><strong style="color: var(--color-text-primary);">95%+ accuracy</strong> on regulatory terminology for custom fine-tuned languages.</li>
+              <li><strong style="color: var(--color-text-primary);">Reduced translation time</strong> from 2-3 days (manual) to 2-3 hours (AI-assisted).</li>
+              <li><strong style="color: var(--color-text-primary);">Streamlined workflow</strong> enabling translation generation and storage with a single click.</li>
+              <li><strong style="color: var(--color-text-primary);">Positive customer satisfaction</strong> with time savings, despite need for manual review on some languages.</li>
+              <li><strong style="color: var(--color-text-primary);">High adoption rate</strong> driven by thoughtful UX that built trust through transparency about quality levels.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Lessons Section -->
+    <section class="py-16" style="background-color: var(--color-background);">
+      <div class="max-w-[1200px] mx-auto px-[1.1rem]">
+        <div class="text-center max-w-4xl mx-auto">
+          <h2 class="text-3xl font-medium mb-8 gradient-heading">Design Lessons Learned</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="p-6 rounded-lg text-left" style="background-color: var(--color-surface);">
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">AI Needs Human-Centered Design</h3>
+              <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
+                Even advanced AI capabilities require thoughtful UX design to build user trust, provide transparency, and handle edge cases gracefully.
+              </p>
+            </div>
+            <div class="p-6 rounded-lg text-left" style="background-color: var(--color-surface);">
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Enterprise AI Adoption is Different</h3>
+              <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
+                Large multinational clients need extensive validation, training, and change management support when adopting AI-powered features.
+              </p>
+            </div>
+            <div class="p-6 rounded-lg text-left" style="background-color: var(--color-surface);">
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Strategic Feature Design Drives Revenue</h3>
+              <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
+                Carefully designed AI capabilities that solve real enterprise pain points can create new revenue streams and increase account value.
+              </p>
+            </div>
+            <div class="p-6 rounded-lg text-left" style="background-color: var(--color-surface);">
+              <h3 class="text-xl font-medium mb-3" style="color: var(--color-text-primary);">Cross-functional Collaboration is Essential</h3>
+              <p class="text-base leading-relaxed" style="color: var(--color-text-secondary);">
+                Successfully launching AI features required close collaboration between product, engineering, data science, and client success teams throughout the entire development cycle.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <div class="max-w-4xl mx-auto px-[1.1rem] mt-16">
+      <div class="border-t pt-8" style="border-color: var(--color-border);">
+        <div class="flex justify-between items-center">
+          <a href={getAssetPath('/') + '?from=case-study#featured-work'} class="inline-flex items-center gap-2 text-base font-medium transition-colors hover:brightness-150" style="color: var(--color-accent);">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+            Back to Featured Work
+          </a>
+          <div class="text-sm" style="color: var(--color-text-muted);">
+            Published {caseStudy.publishedDate.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .case-study-content {
+    color: var(--color-text-secondary);
+  }
+
+  .case-study-content h2 {
+    color: var(--color-text-primary);
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .case-study-content h3 {
+    color: var(--color-text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .case-study-content h4 {
+    color: var(--color-text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .case-study-content p {
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .case-study-content ul, .case-study-content ol {
+    margin-bottom: 1.5rem;
+  }
+
+  .case-study-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .case-study-content strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+  }
+</style>
