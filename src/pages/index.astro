@@ -146,7 +146,7 @@ const featuredCaseStudies = allCaseStudies
 						'animate-fade-in-delay-2'
 					];
 
-					const isComingSoon = caseStudy.data.comingSoon || caseStudy.slug === 'aibidia-release-cycles' || caseStudy.slug === 'aibidia-ai-features';
+					const isComingSoon = caseStudy.data.comingSoon;
 					const cardClasses = `group block rounded-lg overflow-hidden opacity-0 ${animationDelays[index]} ${isComingSoon ? '' : 'hover:scale-105'} transition-all duration-300 case-study-card flex flex-col h-full`;
 
 					if (isComingSoon) {

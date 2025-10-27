@@ -5,7 +5,8 @@ const caseStudiesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    client: z.string(),
+    client: z.string().optional(),
+    company: z.string().optional(),
     role: z.string(),
     timeline: z.string(),
     tags: z.array(z.string()),
@@ -15,6 +16,7 @@ const caseStudiesCollection = defineCollection({
     heroImage: z.string().optional(),
     publishedDate: z.date(),
     outcome: z.string().optional(),
+    comingSoon: z.boolean().optional(),
   }),
 });
 

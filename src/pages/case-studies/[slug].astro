@@ -48,8 +48,8 @@ const getAssetPath = (imagePath) => {
       <!-- Project Meta -->
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6 p-6 rounded-lg" style="background-color: var(--color-surface);">
         <div>
-          <h3 class="text-sm font-medium mb-2" style="color: var(--color-text-muted);">CLIENT</h3>
-          <p class="font-medium" style="color: var(--color-text-primary);">{caseStudy.data.client}</p>
+          <h3 class="text-sm font-medium mb-2" style="color: var(--color-text-muted);">{caseStudy.data.company ? 'COMPANY' : 'CLIENT'}</h3>
+          <p class="font-medium" style="color: var(--color-text-primary);">{caseStudy.data.company || caseStudy.data.client}</p>
         </div>
         <div>
           <h3 class="text-sm font-medium mb-2" style="color: var(--color-text-muted);">ROLE</h3>

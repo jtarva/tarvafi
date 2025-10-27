@@ -1,15 +1,13 @@
 ---
 title: "Release Cycle Optimization"
 description: "Transforming development velocity by reducing release cycles from 6-8 weeks to 1-2 weeks while improving quality and team morale."
-client: "Aibidia"
-role: "Senior Product Designer & Team Lead"
-timeline: "8 months"
+company: "Aibidia"
+role: "Product Manager & Team Lead"
+timeline: "3 months"
 tags: ["Process Design", "Team Leadership", "Agile Transformation", "Short-term", "Growth Impact"]
 featured: true
 order: 2
-comingSoon: true
-# image: "case-studies/aibidia-releases-hero.jpg"
-# heroImage: "case-studies/aibidia-releases-hero.jpg"
+image: "content/release-cycle/release_cycle_cover.jpeg"
 publishedDate: 2024-02-15
 outcome: "75% reduction in release cycles, contributing to 115% YoY growth"
 ---
@@ -26,7 +24,7 @@ Aibidia's compliance product was experiencing significant development bottleneck
 
 ## My Role
 
-As Senior Product Designer and Team Lead, I owned both the strategy and execution of optimizing our development and release processes. Working closely with engineering leadership and the 10-person team, I focused on identifying bottlenecks, redesigning workflows, and implementing sustainable practices that would scale with our rapid growth.
+As Product Manager and Team Lead, I owned both the strategy and execution of optimizing our development and release processes. Working closely with engineering leadership and the 10-person team, I focused on identifying bottlenecks, redesigning workflows, and implementing sustainable practices that would scale with our rapid growth.
 
 ## Design Approach
 
