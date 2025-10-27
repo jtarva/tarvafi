@@ -303,12 +303,46 @@ const featuredCaseStudies = allCaseStudies
 
 			</div>
 
-			<!-- Second row with additional testimonial -->
+			<!-- Second row with additional testimonials -->
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
-				<div class="p-6 rounded-lg opacity-0 animate-fade-in-delay-2 flex flex-col justify-center h-full testimonial-card" style="background-color: var(--color-surface);" data-animate>
-					<p class="text-base leading-relaxed text-center" style="color: var(--color-text-secondary);">
-						Additional testimonials added shortly
-					</p>
+				<div class="p-6 rounded-lg opacity-0 animate-fade-in-delay-2 flex flex-col justify-between h-full testimonial-card" style="background-color: var(--color-surface);" data-animate>
+					<div>
+						<div class="mb-4">
+							<svg class="h-6 w-6 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+							</svg>
+						</div>
+						<p class="text-base mb-4 leading-relaxed" style="color: var(--color-text-secondary);">
+							I have known Jussi first through a shared hobby and later as a colleague at the same company. Jussi is an energetic and results-oriented professional who approaches his work with genuine passion. Among his strengths is the ability to manage broad initiatives without losing sight of the details. Thanks to Jussi's active initiative and sharp instinct, I had the opportunity to work with a skilled team and develop my professional skills in meaningful projects with great customers and talented colleagues.
+						</p>
+					</div>
+					<div class="flex items-center person-details">
+						<img src={getAssetPath('content/testimonials/kari.jpeg')} alt="Kari Antila" class="w-10 h-10 rounded-full mr-3 object-cover">
+						<div>
+							<div class="font-medium text-sm" style="color: var(--color-text-primary);">Kari Antila</div>
+							<div class="text-sm" style="color: var(--color-text-muted);">Member of Technical Staff, NestAI</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="p-6 rounded-lg opacity-0 animate-fade-in-delay-2 flex flex-col justify-between h-full testimonial-card" style="background-color: var(--color-surface);" data-animate>
+					<div>
+						<div class="mb-4">
+							<svg class="h-6 w-6 opacity-50" fill="currentColor" viewBox="0 0 24 24">
+								<path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
+							</svg>
+						</div>
+						<p class="text-base mb-4 leading-relaxed" style="color: var(--color-text-secondary);">
+							Jussi has been a caring and great colleague due to his diligence and dedication to work. He was always pleasant to communicate and cooperate with and his work showed high quality.
+						</p>
+					</div>
+					<div class="flex items-center person-details">
+						<img src={getAssetPath('content/testimonials/vytas.jpeg')} alt="Vytas Vadapolas" class="w-10 h-10 rounded-full mr-3 object-cover">
+						<div>
+							<div class="font-medium text-sm" style="color: var(--color-text-primary);">Vytas Vadapolas</div>
+							<div class="text-sm" style="color: var(--color-text-muted);">.NET Developer, Tietoevery (Former Direct Report)</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
