@@ -600,7 +600,7 @@ class ParticleSystem {
 
     getResponsiveRadius() {
         if (this.width < 768) {
-            return Math.random() * 0.6 + 0.4; // Bigger on mobile
+            return Math.random() * 1.0 + 0.7; // Bigger on mobile
         } else if (this.width < 1024) {
             return Math.random() * 0.8 + 0.5;
         } else {
